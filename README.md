@@ -99,6 +99,10 @@ The Random Forest model achieved the following performance on the test set:
 - **FEATURE-IMPORTANCE**:
 <img src="images/feature_importance.png" alt="Alt text" width=500 height=500>
 
+- **GAUGE-CHART**:
+<img src="images/prediction_chart.png" alt="Alt text" width=400 height=400>
+
+
 These results demonstrate the model's effectiveness in predicting telecom churn.
 
 ## Contributing
