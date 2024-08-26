@@ -90,8 +90,8 @@ The Random Forest model achieved the following performance on the test set:
 - **Recall**: `0.80`
 - **F1 Score**: `0.84`
 - **ROC-AUC**: `0.85`
-- 
-![CONFUSION MATRIX](images/confusion_matrix.png "CONFUSION MATRIX")
+- **CONFUSION MATRIX**:
+<img src="images/confusion_matrix.png" alt="Alt text" width="50%">
 
 These results demonstrate the model's effectiveness in predicting telecom churn.
 
