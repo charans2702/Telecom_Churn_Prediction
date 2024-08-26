@@ -2,6 +2,9 @@
 
 This project focuses on predicting customer churn in a telecom company using a Random Forest classifier. The goal is to identify customers who are likely to cancel their service, allowing the company to take proactive measures to retain them.
 
+## FINAL MODEL
+<img src="images/finalresult.png" alt="Alt text" width=50%>
+
 ## Table of Contents
 - [Overview](#overview)
 - [Dataset](#dataset)
