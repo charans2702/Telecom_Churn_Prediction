@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #000000;
+            background-image: linear-gradient(rgba(240, 240, 240, 0.7), rgba(240, 240, 240, 0.7)), url('images/image123.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 1366px;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: row;
+            animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        .logo {
+            height: 50px;
+            margin-right: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #4a4a4a;
+            font-size: 2.2em;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        h4 {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .form-layout {
+            flex: 2;
+            margin-right: 20px;
+        }
+        .results-column {
+            flex: 1;
+        }
+        .form-group {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+            transition: box-shadow 0.3s ease;
+        }
+        .form-group:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .form-group h3 {
+            color: #4a4a4a;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+            padding-bottom: 5px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .checkbox-item {
+            background-color: #fff;
+            padding: 5px 10px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .checkbox-item:hover {
+            background-color: #e6e6e6;
+            transform: translateY(-2px);
+        }
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .account-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .account-details > div {
+            flex: 1 1 calc(50% - 5px);
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+        select:focus, input[type="number"]:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 0 2px rgba(118,75,162,0.2);
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #764ba2, #667eea);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        button:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+        .prediction {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #4a4a4a;
+            background-color: #e6e6e6;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .chart {
+            margin-top: 20px;
+            text-align: center;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .chart img {
+            max-width: 100%;
+            height: auto;
+            max-height: 300px;
+            border-radius: 5px;
+        }
+        .decorative-element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('path/to/decorative-image.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .top-left {
+            top: 20px;
+            left: 20px;
+        }
+        .bottom-right {
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Telecom Churn Prediction</h1>
+    </header>
+
+    <div class="container">
+        <div class="form-layout">
+          
+            <form action="{{ url_for('predict') }}" method="post">
+                <div class="form-group">
+                    <h3>Customer Information</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><input type="checkbox" name="SeniorCitizen" value="1"> Senior Citizen</label>
+                        <label class="checkbox-item"><input type="checkbox" name="Partner" value="1"> Has a partner</label>
+                        <label class="checkbox-item"><input type="checkbox" name="Dependents" value="1"> Has dependents</label>
+                        <label class="checkbox-item"><input type="checkbox" name="PaperlessBilling" value="1"> Paperless Billing</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h3>Services</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><input type="checkbox" name="PhoneService" value="1"> Phone Service</label>
+                        <label class="checkbox-item"><input type="checkbox" name="MultipleLines" value="1"> Multiple Lines</label>
+                        <label class="checkbox-item"><input type="checkbox" name="OnlineSecurity" value="1"> Online Security</label>
+                        <label class="checkbox-item"><input type="checkbox" name="OnlineBackup" value="1"> Online Backup</label>
+                        <label class="checkbox-item"><input type="checkbox" name="DeviceProtection" value="1"> Device Protection</label>
+                        <label class="checkbox-item"><input type="checkbox" name="TechSupport" value="1"> Tech Support</label>
+                        <label class="checkbox-item"><input type="checkbox" name="StreamingTV" value="1"> Streaming TV</label>
+                        <label class="checkbox-item"><input type="checkbox" name="StreamingMovies" value="1"> Streaming Movies</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h3>Account Details</h3>
+                    <div class="account-details">
+                        <div>
+                            <select name="gender" id="gender" required>
+                                <option value="" disabled selected>Gender</option>
+                                <option value="1">Female</option>
+                                <option value="0">Male</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select id="InternetService" name="InternetService" required>
+                                <option value="" disabled selected>Internet Service</option>
+                                <option value="2">No</option>
+                                <option value="0">DSL</option>
+                                <option value="1">Fiber optic</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select id="Contract" name="Contract" required>
+                                <option value="" disabled selected>Contract Type</option>
+                                <option value="0">Month-to-Month</option>
+                                <option value="1">One-Year</option>
+                                <option value="2">Two-Year</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select id="PaymentMethod" name="PaymentMethod" required>
+                                <option value="" disabled selected>Payment Method</option>
+                                <option value="0">Automatic: Bank Transfer</option>
+                                <option value="1">Automatic: Credit Card</option>
+                                <option value="2">Electronic Check</option>
+                                <option value="3">Mailed Check</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="number" min="0" name="MonthlyCharges" id="MonthlyCharges" placeholder="Monthly Charges" required>
+                        </div>
+                        <div>
+                            <input type="number" min="0" name="Tenure" id="Tenure" placeholder="Tenure in Months" required>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit">Predict Churn</button>
+            </form>
+        </div>
+
+        <div class="results-column">
+            <div class="form-group">
+                <h3>Prediction Result</h3>
+                <div class="prediction">
+                    {{ prediction_text }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h3>Prediction Chart</h3>
+                <div class="chart">
+                    <img src="data:image/png;base64,{{url_1}}" alt="Prediction Chart">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="decorative-element top-left"></div>
+    <div class="decorative-element bottom-right"></div>
+</body>
+</html>
