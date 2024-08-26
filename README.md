@@ -33,3 +33,25 @@ The dataset can be obtained from Kaggle. It typically contains features and a ta
 To run this project locally, follow these steps:
 
 1. Clone the repository:
+   git clone https://github.com/yourusername/telecom-churn-prediction.git
+   cd telecom-churn-prediction
+2. Install the required packages:
+   pip install -r requirements.txt
+   
+## Project Structure
+
+This project is organized as follows:
+
+- `data/`: Contains the datasets
+  - `raw/`: Original, immutable data dump
+  - `processed/`: Cleaned and processed data ready for modeling
+- `notebooks/`: Jupyter notebooks for exploration and modeling
+  - `Exploratory Data Analysis.ipynb`: Initial data exploration
+  - `Churn Prediction Model.ipynb`: Model development and evaluation
+- `src/`: Source code for use in this project
+  - `data_preprocessing.py`: Scripts to clean and preprocess data
+  - `model.py`: Scripts for training and using the model
+- `app.py`: Main application file (e.g., for deploying the model)
+- `requirements.txt`: The list of required Python packages
+- `model.pkl`: Serialized model file
+- `README.md`: The top-level README for developers using this project
