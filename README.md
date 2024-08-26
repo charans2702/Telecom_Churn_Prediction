@@ -40,18 +40,14 @@ To run this project locally, follow these steps:
    
 ## Project Structure
 
-This project is organized as follows:
-
-- `data/`: Contains the datasets
-  - `raw/`: Original, immutable data dump
-  - `processed/`: Cleaned and processed data ready for modeling
-- `notebooks/`: Jupyter notebooks for exploration and modeling
-  - `Exploratory Data Analysis.ipynb`: Initial data exploration
-  - `Churn Prediction Model.ipynb`: Model development and evaluation
-- `src/`: Source code for use in this project
-  - `data_preprocessing.py`: Scripts to clean and preprocess data
-  - `model.py`: Scripts for training and using the model
-- `app.py`: Main application file (e.g., for deploying the model)
-- `requirements.txt`: The list of required Python packages
+- `images/`: Contains images used in the project
+- `templates/`: Contains HTML code for Flask app
+  - `index.html`: Main HTML template for the web interface
+- `Churn_prediction_model.ipynb`: Jupyter notebook for model development and evaluation
+- `Exploratory_Data_Analysis.ipynb`: Jupyter notebook for initial data exploration
+- `app.py`: Main application file for deploying the model (Flask app)
+- `Cleaned_data.csv.txt`: Cleaned and processed dataset
 - `model.pkl`: Serialized model file
+- `requirements.txt`: The list of required Python packages
+- `telco_churn.csv`: Original dataset file
 - `README.md`: The top-level README for developers using this project
