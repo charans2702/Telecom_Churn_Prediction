@@ -108,6 +108,10 @@ The Random Forest model achieved the following performance on the test set:
 
 These results demonstrate the model's effectiveness in predicting telecom churn.
 
+## FLASK APP
+
+I saved the final tuned Random Forest model and deployed it using Flask web app. Flask is a micro web framework written in Python. It is designed to make getting started quick and easy, with the ability to scale up to complex applications. The final app shows churning probability, gauge chart of how severe a customer can Churn. The final app layout can be seen above.
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request or open an Issue.
