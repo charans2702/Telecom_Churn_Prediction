@@ -93,7 +93,7 @@ The Random Forest model achieved the following performance on the test set:
 - **CONFUSION MATRIX**:
                     <img src="images/confusion_matrix.png" alt="Alt text" width=400 height=400>
 - **ROC_CURVE**:
-                    <img src="images/roc_curve.png.png" alt="Alt text" width=500 height=500>
+                    <img src="images/roc_curve.png" alt="Alt text" width=500 height=500>
 
 These results demonstrate the model's effectiveness in predicting telecom churn.
 
