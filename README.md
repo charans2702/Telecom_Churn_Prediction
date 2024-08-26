@@ -14,7 +14,7 @@ This project aims to predict customer churn in a telecom company using machine l
 * Results
 * Contributing
 * License
-![Image description]('images/grid2_heatmap.png')
+![Image description](images/grid2_heatmap.png)
 **Installation**
 
 To set up this project, follow these steps:
