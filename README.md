@@ -33,7 +33,7 @@ The dataset can be obtained from Kaggle. It typically contains features and a ta
 To run this project locally, follow these steps:
 
 1. Clone the repository:
-   git clone https://github.com/yourusername/telecom-churn-prediction.git
+   git clone https://github.com/charans2702/Telecom_Churn_Prediction.git
    cd telecom-churn-prediction
 2. Install the required packages:
    pip install -r requirements.txt
@@ -51,3 +51,53 @@ To run this project locally, follow these steps:
 - `requirements.txt`: The list of required Python packages
 - `telco_churn.csv`: Original dataset file
 - `README.md`: The top-level README for developers using this project
+
+## Data Preprocessing
+
+The data preprocessing steps include:
+1. Handling missing values.
+2. Encoding categorical variables using techniques such as One-Hot Encoding.
+3. Scaling numerical features.
+4. Splitting the data into training and testing sets.
+
+These steps are performed in the `data_preprocessing.py` script or the corresponding Jupyter notebook.
+
+## Model Training
+
+The Random Forest classifier is trained on the preprocessed data. The training process involves:
+1. Splitting the data into training and testing sets.
+2. Initializing the Random Forest classifier with suitable hyperparameters.
+3. Training the model on the training set.
+4. Evaluating the model on the testing set.
+
+## Evaluation
+
+The model's performance is evaluated using various metrics, including:
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- Confusion Matrix
+- ROC-AUC Curve
+
+The evaluation results are saved in the `results/` directory.
+
+## Results
+
+The Random Forest model achieved the following performance on the test set:
+- **Accuracy**: `77.89%`
+- **Precision**: `0.89`
+- **Recall**: `0.80`
+- **F1 Score**: `0.84`
+- **ROC-AUC**: `0.85`
+![CONFUSION MATRIX](IMAGES/confusion_matrix.png "CONFUSION MATRIX")
+
+These results demonstrate the model's effectiveness in predicting telecom churn.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request or open an Issue.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
